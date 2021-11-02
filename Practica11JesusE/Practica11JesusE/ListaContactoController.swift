@@ -34,6 +34,9 @@ class ListaContactoController: UIViewController, UITableViewDelegate, UITableVie
 
     var contactos : [Contacto] = []
 
+    @IBOutlet weak var tvContactos: UITableView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.

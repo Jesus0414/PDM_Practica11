@@ -96,6 +96,9 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="yba-Z5-dUg"/>
+                    <connections>
+                        <outlet property="tvContactos" destination="Fhz-Lm-OMI" id="Onb-fj-wSK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
