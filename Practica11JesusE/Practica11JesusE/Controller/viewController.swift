@@ -37,10 +37,19 @@ class ListaContactoController: UIViewController, UITableViewDelegate, UITableVie
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let contactoSeleccionado = contactos[tvContactos.indexPathForSelectedRow!.row]
-        let destino = segue.destination as! EditarContactoController
-        destino.contacto = contactoSeleccionado
-        destino.callbackActualizarTablaContactos = actualizarTablaContactos
+        if segue.identifier == "goToEdicion"{
+            let contactoSeleccionado = contactos[tvContactos.indexPathForSelectedRow!.row]
+            let destino = segue.destination as! EditarContactoController
+            destino.contacto = contactoSeleccionado
+            destino.indice = tvContactos.indexPathForSelectedRow!.row
+            destino.callbackActualizarTablaContactos = actualizarTablaContactos
+            destino.callbackEliminarContacto = eliminarContacto
+        }
+        
+        if segue.identifier == "goToCreacion"{
+            let destino = segue.destination as! AgregarContactoController
+            destino.callbackAgregarContacto = agregarContacto
+        }
     }
     
     
@@ -57,8 +66,18 @@ class ListaContactoController: UIViewController, UITableViewDelegate, UITableVie
         contactos.append(Contacto(nombre: "Alberto", correo: "Alberto@gmail.com", numero: "64440000"))
     }
 
-    func actualizarTablaContactos(){
+    func actualizarTablaContactos() {
         tvContactos.reloadData()
+    }
+    
+    func eliminarContacto(indice : Int) {
+        contactos.remove(at: indice)
+        actualizarTablaContactos()
+    }
+    
+    func agregarContacto(contacto: Contacto) {
+        contactos.append(contacto)
+        actualizarTablaContactos()
     }
 
 }
